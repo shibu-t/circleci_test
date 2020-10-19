@@ -22,10 +22,10 @@ jobs:
       - checkout
 
       - run:
-        name: Remove merged remote branches
-        command: git branch -r --merged origin/master | grep -v -e origin/master -e origin/develop | sed -e 's% *origin/%%' | xargs --no-run-if-empty -I% git push --delete origin %
-        # デフォルトの/bin/bash -eo pipefailだとマージ済ブランチが1つもない場合にgrepでexit 1されてジョブが失敗するので上書きする
-        shell: /bin/bash
+          name: Remove merged remote branches
+          command: git branch -r --merged origin/master | grep -v -e origin/master -e origin/develop | sed -e 's% *origin/%%' | xargs --no-run-if-empty -I% git push --delete origin %
+          # デフォルトの/bin/bash -eo pipefailだとマージ済ブランチが1つもない場合にgrepでexit 1されてジョブが失敗するので上書きする
+          shell: /bin/bash
     workflows:
       version: 2
 
